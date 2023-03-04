@@ -62,9 +62,12 @@
         function convertTZ(date, tzString) {
             return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
         }
-        const countDownDate = convertTZ("2023/03/5 15:00:00 +0000", "America/Phoenix") 
+        const countDownDate = convertTZ("2023/03/04 23:00:00 +0000", "America/Phoenix") 
         var x = setInterval(function() {
-            var now = new Date().getTime();
+            const nnow = new Date();
+            const options = { timeZone: 'America/Phoenix' };
+            const timeInArizona = nnow.toLocaleString('en-US', options);
+            const now = new Date(timeInArizona)
             var distance = countDownDate - now;
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -79,6 +82,7 @@
             if (hours < 10){
                 hours = "0" + hours
             }
+            document.getElementById("time").innerHTML = now.getHours() + ":" + now.getMinutes()
             document.getElementById("Countdown").innerHTML = days + ":" + hours + ":"
             + minutes + ":" + seconds;
             if (distance < 0) {
@@ -121,7 +125,7 @@
     <div class="center">
         <tnf class="centercoming">Coming in:</tnf><br>
         <tnf id="Countdown">00:00:00:00</tnf><br>
-        
+        <tnf style="font-size:larger;" id="time">Time in arizona here</tnf>
     </div>
 </body>
 </html>
