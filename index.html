@@ -80,7 +80,11 @@
             if (hours < 10){
                 hours = "0" + hours
             }
-            document.getElementById("time").innerHTML = now.getHours() + ":" + now.getMinutes()
+            let hminutes = now.getMinutes()
+            if (hminutes < 10){
+                hminutes = "0" + hminutes
+            }
+            document.getElementById("time").innerHTML = now.getHours() + ":" + hminutes;
             document.getElementById("Countdown").innerHTML = days + ":" + hours + ":"
             + minutes + ":" + seconds;
             if (distance < 0) {
