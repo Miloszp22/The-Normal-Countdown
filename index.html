@@ -59,13 +59,12 @@
         }
     </style>
     <script>
-        function convertTZ(date, tzString) {
-            return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
-        }
-        const countDownDate = convertTZ("2023/03/06 23:00:00 +0000", "America/Phoenix") 
+        const time = new Date("2023/03/05 14:12:00 +0000");
+        const options = { timeZone: 'America/Phoenix' };
+        const timeInArizona = nnow.toLocaleString('en-US', options);
+        const countDownDate = new Date(timeInArizona)
         var x = setInterval(function() {
             const nnow = new Date();
-            const options = { timeZone: 'America/Phoenix' };
             const timeInArizona = nnow.toLocaleString('en-US', options);
             const now = new Date(timeInArizona)
             var distance = countDownDate - now;
